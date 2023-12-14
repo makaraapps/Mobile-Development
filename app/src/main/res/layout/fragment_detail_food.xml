@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/brown"
+    tools:context=".DetailFoodFragment"
+    android:padding="16dp"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_title_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:text="Detail Food"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_food"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:src="@drawable/klepon"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="16dp"
+            app:shapeAppearanceOverlay="@style/RoundedImageView"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_detail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/tv_title_food"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:text="Klepon"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/iv_food"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/tv_description_food"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu non diam phasellus vestibulum lorem sed risus. Sed arcu non odio euismod lacinia at quis. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Commodo ullamcorper a lacus vestibulum sed arcu. Pretium viverra suspendisse potenti nullam ac. Eu sem integer vitae justo eget magna fermentum. Tellus orci ac auctor augue mauris. Diam sollicitudin tempor id eu nisl nunc mi ipsum faucibus. Fames ac turpis egestas integer eget aliquet nibh. Dis parturient montes nascetur ridiculus. Orci eu lobortis elementum nibh. Bibendum arcu vitae elementum curabitur vitae nunc sed velit. Fringilla phasellus faucibus scelerisque eleifend. Potenti nullam ac tortor vitae purus faucibus ornare. Sit amet porttitor eget dolor morbi non arcu risus. Porttitor lacus luctus accumsan tortor posuere. Morbi tristique senectus et netus et malesuada. Et netus et malesuada fames ac turpis egestas. Arcu bibendum at varius vel. Montes nascetur ridiculus mus mauris vitae ultricies leo. Ullamcorper sit amet risus nullam eget felis eget. Pharetra diam sit amet nisl suscipit adipiscing bibendum est. Pharetra et ultrices neque ornare aenean euismod. Penatibus et magnis dis parturient montes nascetur ridiculus mus. Eu ultrices vitae auctor eu augue ut. Tristique senectus et netus et malesuada fames. Sit amet aliquam id diam maecenas. Ac feugiat sed lectus vestibulum mattis ullamcorper velit. Lectus quam id leo in vitae turpis massa. Lectus magna fringilla urna porttitor rhoncus dolor purus. Risus pretium quam vulputate dignissim suspendisse in. Eget sit amet tellus cras adipiscing enim eu. Accumsan tortor posuere ac ut. Arcu dui vivamus arcu felis. Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. At imperdiet dui accumsan sit amet nulla. Erat pellentesque adipiscing commodo elit at. Sed enim ut sem viverra aliquet. Dolor sit amet consectetur adipiscing. Enim nec dui nunc mattis enim ut tellus elementum sagittis. Netus et malesuada fames ac turpis egestas. Aliquam id diam maecenas ultricies. Ipsum a arcu cursus vitae congue mauris rhoncus. Vel orci porta non pulvinar neque laoreet. Ullamcorper malesuada proin libero nunc. Eros donec ac odio tempor orci dapibus ultrices in. Blandit massa enim nec dui nunc mattis. Mattis aliquam faucibus purus in massa tempor nec feugiat nisl. Consectetur lorem donec massa sapien faucibus et molestie. In aliquam sem fringilla ut morbi. Montes nascetur ridiculus mus mauris vitae ultricies leo integer. Orci nulla pellentesque dignissim enim sit amet venenatis. Vitae suscipit tellus mauris a diam maecenas sed. Velit egestas dui id ornare arcu. Egestas congue quisque egestas diam. Dui accumsan sit amet nulla facilisi. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Nam at lectus urna duis. At augue eget arcu dictum. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Interdum consectetur libero id faucibus nisl tincidunt eget nullam. Quam adipiscing vitae proin sagittis nisl rhoncus mattis. Pulvinar etiam non quam lacus. Bibendum enim facilisis gravida neque convallis a cras. Elementum nisi quis eleifend quam adipiscing vitae proin sagittis. Mauris sit amet massa vitae tortor condimentum lacinia. Potenti nullam ac tortor vitae purus faucibus ornare. Sit amet dictum sit amet justo donec enim. Interdum velit laoreet id donec ultrices tincidunt arcu. Massa massa ultricies mi quis hendrerit. Mollis aliquam ut porttitor leo a diam. Et pharetra pharetra massa massa. Vehicula ipsum a arcu cursus vitae. Netus et malesuada fames ac. Vitae proin sagittis nisl rhoncus mattis. Leo in vitae turpis massa sed. Feugiat in fermentum posuere urna nec tincidunt. Sed vulputate mi sit amet mauris commodo. Adipiscing enim eu turpis egestas. Lorem donec massa sapien faucibus et. Sapien nec sagittis aliquam malesuada bibendum arcu. Sed risus ultricies tristique nulla. Eget sit amet tellus cras adipiscing enim eu turpis. Fermentum leo vel orci porta. Morbi enim nunc faucibus a pellentesque sit. Erat pellentesque adipiscing commodo elit at imperdiet dui accumsan sit. Dolor sit amet consectetur adipiscing elit duis tristique sollicitudin nibh. Amet mauris commodo quis imperdiet. Sit amet nisl suscipit adipiscing bibendum est ultricies integer. Eget gravida cum sociis natoque penatibus et magnis dis. Purus ut faucibus pulvinar elementum integer. Ut lectus arcu bibendum at varius vel pharetra vel. Donec ac odio tempor orci dapibus. Eu turpis egestas pretium aenean. Eget gravida cum sociis natoque penatibus et. Scelerisque eu ultrices vitae auctor eu augue ut lectus. Pharetra diam sit amet nisl suscipit adipiscing. Posuere urna nec tincidunt praesent semper. Neque convallis a cras semper auctor neque vitae."
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_food"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/tv_title_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="From : "
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/tv_description_food"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/tv_from_food"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Java"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@id/tv_title_from"
+            app:layout_constraintTop_toTopOf="@id/tv_title_from"
+            app:layout_constraintBottom_toBottomOf="@id/tv_title_from"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

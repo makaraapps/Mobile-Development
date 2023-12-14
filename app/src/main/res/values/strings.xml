@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Makara</string>
+    <!--  Auth Page  -->
+    <string name="title_signup_page">Create Account</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="signup">Sign Up</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account">"Don't Have an Account? "</string>
+    <string name="already_have_an_account">"Already Have an Account? "</string>
+    <string name="email_error">Email not valid</string>
+    <string name="password_error">At least 8 characters</string>
+    <string name="select_your_country">Select Your Country</string>
+    <!--    -->
+    <string name="logout">Logout</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="forgot_password">Forgot Password?</string>
+</resources>

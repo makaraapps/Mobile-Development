@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Makara" parent="Theme.Material3.DayNight">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowBackground">@color/brown</item>
+        <item name="android:colorPrimary">@color/brown</item>
+        <item name="android:colorPrimaryDark">@color/brown</item>
+        <item name="colorAccent">@color/light_grey</item>
+        <item name="android:textColorPrimary">@color/light_grey</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="Theme.Makara" parent="Base.Theme.Makara" />
+
+    <style name="RoundedImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+</resources>
