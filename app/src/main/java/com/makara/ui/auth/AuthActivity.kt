@@ -1,6 +1,7 @@
 package com.makara.ui.auth
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.core.widget.doOnTextChanged
 import com.makara.MainActivity
 import com.makara.R
 import com.makara.ViewModelFactory
@@ -45,29 +47,16 @@ class AuthActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.apply {
-//            binding.signupButton.setOnClickListener {
-//                if (nameEditText.length() == 0 && emailEditText.length() == 0 && passwordEditText.length() == 0) {
-//                    nameEditText.error = "This field is required!"
-//                    emailEditText.error = "This field is required!"
-//                    passwordEditText.setError("This field is required!", null)
-//                } else if (nameEditText.length() != 0 && emailEditText.length() != 0 && passwordEditText.length() != 0) {
-//                    showLoading()
-//                    binding.apply {
-//                        viewModel.postSignup(
-//                            nameEditText.text.toString(),
-//                            emailEditText.text.toString(),
-//                            passwordEditText.text.toString()
-//                        )
-//                    }
-//                    showToast()
-//                    viewModel.registerResponse.observe(this@AuthActivity) { response ->
-//                        if (!response.error) {
-//                            startActivity(Intent(this@AuthActivity, AuthActivity::class.java))
-//                            finish()
-//                        }
-//                    }
-//                }
-//            }
+            binding.signupButton.setOnClickListener {
+                if (nameEditText.length() == 0 && emailEditText.length() == 0 && passwordEditText.length() == 0) {
+                    nameEditText.error = "This field is required!"
+                    emailEditText.error = "This field is required!"
+                    passwordEditText.setError("This field is required!", null)
+                } else if (nameEditText.length() != 0 && emailEditText.length() != 0 && passwordEditText.length() != 0) {
+                    startActivity(Intent(this@AuthActivity, AuthActivity::class.java))
+                    finish()
+                }
+            }
 
             binding.loginButton.setOnClickListener {
                 if (emailEditText.length() == 0 && passwordEditText.length() == 0) {

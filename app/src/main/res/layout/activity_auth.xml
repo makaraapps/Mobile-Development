@@ -34,7 +34,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:text="@string/login"
-            android:textColor="?android:textColorPrimary"
             android:fontFamily="@font/spicyrice"
             android:textSize="32sp"
             android:textStyle="bold"
@@ -51,7 +50,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:text="@string/title_signup_page"
-            android:textColor="?android:textColorPrimary"
             android:fontFamily="@font/spicyrice"
             android:textSize="32sp"
             android:textStyle="bold"
@@ -74,7 +72,8 @@
             app:layout_constraintEnd_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5"
-            app:startIconDrawable="@drawable/ic_baseline_person">
+            app:startIconDrawable="@drawable/ic_baseline_person"
+            app:startIconTint="@color/brown">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nameEditText"
@@ -99,7 +98,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleTextViewLogin"
-            app:startIconDrawable="@drawable/ic_baseline_email">
+            app:startIconDrawable="@drawable/ic_baseline_email"
+            app:startIconTint="@color/brown">
 
             <com.makara.ui.auth.CustomView
                 android:id="@+id/emailEditText"
@@ -127,7 +127,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout"
-            app:startIconDrawable="@drawable/ic_baseline_lock">
+            app:startIconDrawable="@drawable/ic_baseline_lock"
+            app:startIconTint="@color/brown">
 
             <com.makara.ui.auth.CustomView
                 android:id="@+id/passwordEditText"
@@ -145,7 +146,6 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:text="@string/forgot_password"
-            android:textColor="?android:textColorPrimary"
             app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -192,7 +192,6 @@
             android:layout_marginBottom="24dp"
             android:gravity="center"
             android:text="@string/don_t_have_an_account"
-            android:textColor="?android:textColorPrimary"
             app:layout_constraintTop_toBottomOf="@+id/signupButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -207,7 +206,6 @@
             android:layout_marginBottom="24dp"
             android:layout_marginEnd="32dp"
             android:text="@string/signup"
-            android:textColor="?android:textColorPrimary"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/signupButton"
@@ -225,7 +223,6 @@
             android:gravity="center"
             android:text="@string/already_have_an_account"
             android:visibility="invisible"
-            android:textColor="?android:textColorPrimary"
             app:layout_constraintTop_toBottomOf="@+id/signupButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -241,7 +238,6 @@
             android:layout_marginBottom="24dp"
             android:text="@string/login"
             android:visibility="invisible"
-            android:textColor="?android:textColorPrimary"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/signupButton"
