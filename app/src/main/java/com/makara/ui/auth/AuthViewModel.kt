@@ -1,5 +1,6 @@
 package com.makara.ui.auth
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -18,15 +19,16 @@ class AuthViewModel(private val repository: MakaraRepository) : ViewModel() {
 
     fun postSignup(name: String, email: String, password: String) {
         viewModelScope.launch {
-            repository.postSignup(name, email, password)
+            repository.firebaseSignup(name, email, password)
         }
     }
 
     fun postLogin(email: String, password: String) {
         viewModelScope.launch {
-            repository.postLogin(email, password)
+            repository.firebaseLogin(email, password)
         }
     }
+
 
     fun saveSession(session: MakaraModel) {
         viewModelScope.launch {
