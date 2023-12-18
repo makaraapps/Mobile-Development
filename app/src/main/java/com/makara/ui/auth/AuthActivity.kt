@@ -2,7 +2,6 @@ package com.makara.ui.auth
 
 import android.animation.ObjectAnimator
 import android.content.Intent
-import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,10 +10,7 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
-import androidx.core.widget.doOnTextChanged
 import com.makara.MainActivity
-import com.makara.R
 import com.makara.ViewModelFactory
 import com.makara.data.local.pref.MakaraModel
 import com.makara.databinding.ActivityAuthBinding
@@ -33,6 +29,7 @@ class AuthActivity : AppCompatActivity() {
         setupView()
         setupAction()
         playingAnimation()
+        observeLoginResponse()
     }
 
     private fun setupView() {
@@ -47,6 +44,25 @@ class AuthActivity : AppCompatActivity() {
         }
         supportActionBar?.hide()
     }
+
+    private fun observeLoginResponse() {
+        viewModel.loginResponse.observe(this@AuthActivity) { response ->
+            if (!response.error) {
+                saveSession(
+                    MakaraModel(
+                        response.loginResult?.email.toString(),
+                        AUTH_KEY + (response.loginResult?.token.toString()),
+                        true
+                    )
+                )
+                startActivity(Intent(this@AuthActivity, MainActivity::class.java))
+                finish()
+            } else {
+                Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
 
     private fun setupAction() {
         binding.apply {
