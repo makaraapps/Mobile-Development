@@ -10,15 +10,13 @@ import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "session")
-
 class MakaraPreference private constructor(private val dataStore: DataStore<Preferences>) {
 
-    suspend fun saveSession(user: MakaraModel) {
+    suspend fun saveSession(session: MakaraModel) {
         dataStore.edit { preferences ->
-            preferences[EMAIL_KEY] = user.email
-            preferences[TOKEN_KEY] = user.token
-            preferences[IS_LOGIN_KEY] = true
+            preferences[EMAIL_KEY] = session.email
+            preferences[TOKEN_KEY] = session.token
+            preferences[IS_LOGIN_KEY] = session.isLogin
         }
     }
 
@@ -29,6 +27,18 @@ class MakaraPreference private constructor(private val dataStore: DataStore<Pref
                 preferences[TOKEN_KEY] ?: "",
                 preferences[IS_LOGIN_KEY] ?: false
             )
+        }
+    }
+
+    fun getToken(): Flow<String> {
+        return dataStore.data.map { preferences ->
+            preferences[TOKEN_KEY] ?: ""
+        }
+    }
+
+    suspend fun login() {
+        dataStore.edit { preference ->
+            preference[IS_LOGIN_KEY] = true
         }
     }
 

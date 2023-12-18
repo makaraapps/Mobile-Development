@@ -10,6 +10,7 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
 import com.makara.databinding.ActivityMainBinding
 import com.makara.ui.auth.AuthActivity
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private val viewModel by viewModels<MainViewModel> {
         ViewModelFactory.getInstance(this)
     }
+    private var token = ""
 
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,15 +28,20 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        viewModel.getSession().observe(this) { user ->
+        setupUser()
+        setupView()
+        setupAction()
+    }
+
+    private fun setupUser() {
+        viewModel.getSession().observe(this) {user ->
+            token = user.token
             if (!user.isLogin) {
                 startActivity(Intent(this, AuthActivity::class.java))
                 finish()
+            } else {
             }
         }
-
-        setupView()
-        setupAction()
     }
 
     private fun setupView() {
@@ -74,7 +81,19 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.navBtnLogout.setOnClickListener {
-            viewModel.logout()
+            AlertDialog.Builder(this).apply {
+                setTitle("Log Out!")
+                setMessage("Are you sure want to log out?")
+                setNegativeButton("No") { _,_ ->
+                }
+                setPositiveButton("Yes") { _, _ ->
+                    viewModel.logout()
+                    finish()
+                }
+                create()
+                show()
+            }
+            true
         }
     }
 }

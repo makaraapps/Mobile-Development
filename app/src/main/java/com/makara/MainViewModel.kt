@@ -9,6 +9,7 @@ import com.makara.data.local.pref.MakaraModel
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository: MakaraRepository) : ViewModel() {
+    val isLoading: LiveData<Boolean> = repository.isLoading
     fun getSession(): LiveData<MakaraModel> {
         return repository.getSession().asLiveData()
     }

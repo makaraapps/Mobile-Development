@@ -5,25 +5,28 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.makara.data.MakaraRepository
 import com.makara.data.local.pref.MakaraModel
+import com.makara.data.remote.response.LoginResponse
+import com.makara.data.remote.response.RegisterResponse
+import com.makara.di.Event
 import kotlinx.coroutines.launch
 
 class AuthViewModel(private val repository: MakaraRepository) : ViewModel() {
-//    val registerResponse: LiveData<RegisterResponse> = repository.signupResponse
-//    val loginResponse: LiveData<LoginResponse> = repository.loginResponse
-//    val isLoading: LiveData<Boolean> = repository.isLoading
-//    val toastText: LiveData<Event<String>> = repository.toastText
+    val registerResponse: LiveData<RegisterResponse> = repository.signupResponse
+    val loginResponse: LiveData<LoginResponse> = repository.loginResponse
+    val isLoading: LiveData<Boolean> = repository.isLoading
+    val toastText: LiveData<Event<String>> = repository.toastText
 
-//    fun postSignup(name: String, email: String, password: String) {
-//        viewModelScope.launch {
-//            repository.postSignup(name, email, password)
-//        }
-//    }
+    fun postSignup(name: String, email: String, password: String) {
+        viewModelScope.launch {
+            repository.postSignup(name, email, password)
+        }
+    }
 
-//    fun postLogin(email: String, password: String) {
-//        viewModelScope.launch {
-//            repository.postLogin(email, password)
-//        }
-//    }
+    fun postLogin(email: String, password: String) {
+        viewModelScope.launch {
+            repository.postLogin(email, password)
+        }
+    }
 
     fun saveSession(session: MakaraModel) {
         viewModelScope.launch {
@@ -31,9 +34,9 @@ class AuthViewModel(private val repository: MakaraRepository) : ViewModel() {
         }
     }
 
-//    fun login() {
-//        viewModelScope.launch {
-//            repository.login()
-//        }
-//    }
+    fun login() {
+        viewModelScope.launch {
+            repository.login()
+        }
+    }
 }
