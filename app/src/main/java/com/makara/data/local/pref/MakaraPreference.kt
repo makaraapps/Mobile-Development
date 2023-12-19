@@ -1,13 +1,12 @@
 package com.makara.data.local.pref
 
-import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 class MakaraPreference private constructor(private val dataStore: DataStore<Preferences>) {
@@ -47,6 +46,24 @@ class MakaraPreference private constructor(private val dataStore: DataStore<Pref
             preferences.clear()
         }
     }
+
+    suspend fun saveAuthToken(token: String) {
+        dataStore.edit { preferences ->
+            preferences[TOKEN_KEY] = token
+        }
+    }
+
+    suspend fun getAuthToken(): String? {
+        val preferences = dataStore.data.first() // Read the current preferences
+        val isLoggedIn = preferences[IS_LOGIN_KEY] ?: false
+        return if (isLoggedIn) {
+            preferences[TOKEN_KEY] // Retrieve the token if the user is logged in
+        } else {
+            null // Return null if the user is not logged in
+        }
+    }
+
+
 
     companion object {
         @Volatile
