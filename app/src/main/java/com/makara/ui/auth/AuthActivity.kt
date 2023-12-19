@@ -5,11 +5,13 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
+import com.google.firebase.auth.FirebaseAuth
 import com.makara.MainActivity
 import com.makara.ViewModelFactory
 import com.makara.data.local.pref.MakaraModel
@@ -48,20 +50,34 @@ class AuthActivity : AppCompatActivity() {
     private fun observeLoginResponse() {
         viewModel.loginResponse.observe(this@AuthActivity) { response ->
             if (!response.error) {
-                saveSession(
-                    MakaraModel(
-                        response.loginResult?.email.toString(),
-                        AUTH_KEY + (response.loginResult?.token.toString()),
-                        true
-                    )
-                )
-                startActivity(Intent(this@AuthActivity, MainActivity::class.java))
-                finish()
+                // Trigger token retrieval
+                viewModel.getSavedToken()
             } else {
                 Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
             }
         }
+
+        viewModel.tokenRetrieved.observe(this@AuthActivity) { token ->
+            if (token != null) {
+                // Now we have the token, we can save the session
+                val userEmail = FirebaseAuth.getInstance().currentUser?.email ?: ""
+                saveSession(
+                    MakaraModel(
+                        userEmail,
+                        "Bearer $token", // Here the "Bearer " prefix is added
+                        true
+                    )
+                )
+                // Navigate to MainActivity
+                startActivity(Intent(this@AuthActivity, MainActivity::class.java))
+                finish()
+            } else {
+                // Handle the case where the token retrieval failed
+                Toast.makeText(this, "Failed to retrieve authentication token.", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
+
 
 
     private fun setupAction() {
@@ -91,34 +107,30 @@ class AuthActivity : AppCompatActivity() {
             }
 
             binding.loginButton.setOnClickListener {
+                Log.i("LoginListener", "Login button clicked")
                 if (emailEditText.length() == 0 && passwordEditText.length() == 0) {
                     emailEditText.error = "This field is required!"
-                    passwordEditText.setError("This field is required!", null)
+                    passwordEditText.error = "This field is required!"
                 } else if (emailEditText.length() != 0 && passwordEditText.length() != 0) {
+                    Log.i("LoginListener", "Logging in")
                     showLoading()
-                    binding.apply {
-                        viewModel.postLogin(
-                            emailEditText.text.toString(),
-                            passwordEditText.text.toString()
-                        )
-                        viewModel.login()
-                        viewModel.loginResponse.observe(this@AuthActivity) { response ->
-                            if (!response.error) {
-                                saveSession(
-                                    MakaraModel(
-                                        response.loginResult?.email.toString(),
-                                        AUTH_KEY + (response.loginResult?.token.toString()),
-                                        true
-                                    )
-                                )
-                                startActivity(Intent(this@AuthActivity, MainActivity::class.java))
-                                finish()
-                            }
+                    viewModel.postLogin(
+                        emailEditText.text.toString(),
+                        passwordEditText.text.toString()
+                    )
+                    Log.i("LoginListener", "Post login done")
+                    viewModel.loginResponse.observe(this@AuthActivity) { response ->
+                        if (!response.error) {
+                            Log.i("LoginListener", "Login response is not error")
+                            // Now we need to retrieve the token from the saved location
+                            viewModel.getSavedToken()
+                            Log.i("LoginListener", "Get saved token ${viewModel.getSavedToken()}")
                         }
                     }
-                    showToast()
                 }
+                showToast()
             }
+
         }
     }
 

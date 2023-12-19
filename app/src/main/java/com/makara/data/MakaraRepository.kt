@@ -7,8 +7,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.ktx.userProfileChangeRequest
+import com.google.gson.Gson
 import com.makara.data.local.pref.MakaraModel
 import com.makara.data.local.pref.MakaraPreference
+import com.makara.data.remote.response.ErrorResponse
 import com.makara.data.remote.response.LoginResponse
 import com.makara.data.remote.response.RegisterResponse
 import com.makara.data.remote.retrofit.ApiService
@@ -16,10 +18,19 @@ import com.makara.di.Event
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
+
 class MakaraRepository(
     private val apiService: ApiService,
     private val makaraPreference: MakaraPreference
 ) {
+    sealed class PredictionResult {
+        data class Success(val foodName: String) : PredictionResult()
+        data class Error(val message: String) : PredictionResult()
+    }
+
 
     private val _signupResponse = MutableLiveData<RegisterResponse>()
     val signupResponse: LiveData<RegisterResponse> = _signupResponse
@@ -72,13 +83,14 @@ class MakaraRepository(
                             // Launch a coroutine within the passed scope to call the suspend function
                             scope.launch {
                                 saveToken(token)
+                                // After saving the token, set the login response
+                                _isLoading.value = false
+                                _loginResponse.value = LoginResponse(
+                                    error = false,
+                                    message = "Login successful",
+                                    // ... other data if needed
+                                )
                             }
-                            _isLoading.value = false
-                            _loginResponse.value = LoginResponse(
-                                error = false,
-                                message = "Login successful",
-                                // ... other data if needed
-                            )
                         }
                     }?.addOnFailureListener { exception ->
                         _isLoading.value = false
@@ -125,5 +137,28 @@ class MakaraRepository(
 
     companion object {
         private const val TAG = "MakaraRepository"
+    }
+
+    suspend fun sendImageForPrediction(authToken: String, imageUrl: String): PredictionResult {
+        val json = JSONObject().apply {
+            put("image_url", imageUrl)
+        }
+        val requestBody = json.toString().toRequestBody("application/json".toMediaTypeOrNull())
+
+        return try {
+            val response = apiService.sendImageForPrediction(authToken, requestBody)
+            if (response.isSuccessful) {
+                // Handle successful response
+                val responseBody = response.body() ?: throw Exception("Response body is null")
+                PredictionResult.Success(responseBody.data?.name ?: "Unknown")
+            } else {
+                // Handle request errors
+                val errorBody = response.errorBody()?.string()
+                val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
+                PredictionResult.Error(errorResponse.message)
+            }
+        } catch (e: Exception) {
+            PredictionResult.Error(e.message ?: "An unknown error occurred")
+        }
     }
 }
