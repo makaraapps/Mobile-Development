@@ -1,7 +1,6 @@
 package com.makara
 
 import UploadImageViewModel
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,12 +9,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import com.google.firebase.storage.FirebaseStorage
 import com.makara.data.MakaraRepository
 import com.makara.databinding.FragmentUploadImageBinding
 import com.makara.di.Injection
-import java.util.UUID
 
 
 class UploadImageFragment : Fragment() {

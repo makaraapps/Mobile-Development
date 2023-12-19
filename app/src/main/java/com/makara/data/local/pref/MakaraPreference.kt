@@ -1,7 +1,6 @@
 package com.makara.data.local.pref
 
 import android.util.Log
-import android.widget.Toast
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
@@ -28,12 +27,6 @@ class MakaraPreference private constructor(private val dataStore: DataStore<Pref
                 preferences[TOKEN_KEY] ?: "",
                 preferences[IS_LOGIN_KEY] ?: false
             )
-        }
-    }
-
-    fun getToken(): Flow<String> {
-        return dataStore.data.map { preferences ->
-            preferences[TOKEN_KEY] ?: ""
         }
     }
 

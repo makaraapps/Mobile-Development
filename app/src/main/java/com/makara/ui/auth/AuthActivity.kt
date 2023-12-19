@@ -160,7 +160,4 @@ class AuthActivity : AppCompatActivity() {
         viewModel.saveSession(session)
     }
 
-    companion object {
-        private const val AUTH_KEY = "Bearer "
-    }
 }

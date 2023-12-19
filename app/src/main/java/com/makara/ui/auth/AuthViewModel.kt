@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.auth.FirebaseAuth
 import com.makara.data.MakaraRepository
 import com.makara.data.local.pref.MakaraModel
 import com.makara.data.local.pref.MakaraPreference
@@ -43,11 +42,6 @@ class AuthViewModel(private val repository: MakaraRepository, private val prefer
         }
     }
 
-    fun login() {
-        viewModelScope.launch {
-            repository.login()
-        }
-    }
 
     fun getSavedToken() {
         viewModelScope.launch {
