@@ -99,6 +99,10 @@ class CameraFragment : Fragment() {
         }
 
         binding.captureImage.setOnClickListener { takePhoto() }
+
+        binding.ivBackArrow.setOnClickListener{
+            requireActivity().onBackPressed()
+        }
     }
 
     override fun onResume() {

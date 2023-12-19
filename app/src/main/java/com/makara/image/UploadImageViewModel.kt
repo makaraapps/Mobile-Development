@@ -1,4 +1,5 @@
 import android.net.Uri
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,6 +12,7 @@ import java.util.UUID
 class UploadImageViewModel(private val repository: MakaraRepository, private val makaraPreference: MakaraPreference) : ViewModel() {
 
     val uploadResult = MutableLiveData<MakaraRepository.PredictionResult>()
+    val isLoading: LiveData<Boolean> = repository.isLoading
 
     fun uploadImageAndPredict(imageUri: Uri) {
         // Upload image to Firebase Storage
