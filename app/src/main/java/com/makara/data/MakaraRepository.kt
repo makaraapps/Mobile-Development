@@ -31,7 +31,6 @@ class MakaraRepository(
         data class Error(val message: String) : PredictionResult()
     }
 
-
     private val _signupResponse = MutableLiveData<RegisterResponse>()
     val signupResponse: LiveData<RegisterResponse> = _signupResponse
 
@@ -43,6 +42,7 @@ class MakaraRepository(
 
     private val _toastText = MutableLiveData<Event<String>>()
     val toastText: LiveData<Event<String>> = _toastText
+
     fun firebaseSignup(name: String, email: String, password: String) {
         _isLoading.value = true
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
@@ -140,6 +140,7 @@ class MakaraRepository(
     }
 
     suspend fun sendImageForPrediction(authToken: String, imageUrl: String): PredictionResult {
+        _isLoading.value = true
         val json = JSONObject().apply {
             put("image_url", imageUrl)
         }
@@ -148,6 +149,7 @@ class MakaraRepository(
         return try {
             val response = apiService.sendImageForPrediction(authToken, requestBody)
             if (response.isSuccessful) {
+                _isLoading.value = false
                 // Handle successful response
                 val responseBody = response.body() ?: throw Exception("Response body is null")
                 PredictionResult.Success(responseBody.data?.name ?: "Unknown")

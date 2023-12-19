@@ -21,6 +21,11 @@ class DetailFoodFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.ivBackArrow.setOnClickListener{
+            requireActivity().onBackPressed()
+        }
+
+
         val food = DetailFoodFragmentArgs.fromBundle(arguments as Bundle).food
 
         if (food != null) {
