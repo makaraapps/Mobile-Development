@@ -1,13 +1,13 @@
 package com.makara.data.local.pref
 
-import android.content.Context
+import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 class MakaraPreference private constructor(private val dataStore: DataStore<Preferences>) {
@@ -30,16 +30,11 @@ class MakaraPreference private constructor(private val dataStore: DataStore<Pref
         }
     }
 
-    fun getToken(): Flow<String> {
-        return dataStore.data.map { preferences ->
-            preferences[TOKEN_KEY] ?: ""
-        }
-    }
-
     suspend fun login() {
         dataStore.edit { preference ->
             preference[IS_LOGIN_KEY] = true
         }
+        Log.i("MakaraPreference", "Succesfully login")
     }
 
     suspend fun logout() {
@@ -47,6 +42,22 @@ class MakaraPreference private constructor(private val dataStore: DataStore<Pref
             preferences.clear()
         }
     }
+
+    suspend fun saveAuthToken(token: String) {
+        dataStore.edit { preferences ->
+            preferences[TOKEN_KEY] = token
+            Log.i("MakaraPreference", "Succesfully save token, token: ${preferences[TOKEN_KEY]}")
+        }
+    }
+
+    suspend fun getAuthToken(): String? {
+        Log.i("MakaraPreference", "getAuthToken")
+        val preferences = dataStore.data.first() // Read the current preferences
+        val token = preferences[TOKEN_KEY] ?: return null
+        Log.i("MakaraPreference", "getAuthToken, token: $token")
+        return token
+    }
+
 
     companion object {
         @Volatile
