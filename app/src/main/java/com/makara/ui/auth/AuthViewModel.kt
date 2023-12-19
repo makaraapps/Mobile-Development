@@ -18,10 +18,10 @@ class AuthViewModel(private val repository: MakaraRepository, private val prefer
     val isLoading: LiveData<Boolean> = repository.isLoading
     val toastText: LiveData<Event<String>> = repository.toastText
     // A MutableLiveData to post the token value which will be private to the ViewModel
-    private val _tokenRetrieved = MutableLiveData<String>()
+    private val _tokenRetrieved = MutableLiveData<String?>()
 
     // An immutable LiveData to expose outside the ViewModel
-    val tokenRetrieved: LiveData<String> = _tokenRetrieved
+    val tokenRetrieved: MutableLiveData<String?> = _tokenRetrieved
 
     fun postSignup(name: String, email: String, password: String) {
         viewModelScope.launch {
