@@ -105,7 +105,7 @@ class MakaraRepository(
 
 
 
-    suspend fun saveToken(token: String){
+    private suspend fun saveToken(token: String){
         makaraPreference.saveAuthToken(token)
     }
 
@@ -154,12 +154,14 @@ class MakaraRepository(
                 val responseBody = response.body() ?: throw Exception("Response body is null")
                 PredictionResult.Success(responseBody.data?.name ?: "Unknown")
             } else {
+                _isLoading.value = false
                 // Handle request errors
                 val errorBody = response.errorBody()?.string()
                 val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
                 PredictionResult.Error(errorResponse.message)
             }
         } catch (e: Exception) {
+            _isLoading.value = false
             PredictionResult.Error(e.message ?: "An unknown error occurred")
         }
     }

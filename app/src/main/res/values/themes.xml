@@ -4,7 +4,7 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="android:windowBackground">@color/brown</item>
-        <item name="android:colorPrimary">@color/brown</item>
+        <item name="colorPrimary">@color/orange</item>
         <item name="android:colorPrimaryDark">@color/brown</item>
         <item name="colorAccent">@color/brown</item>
 
