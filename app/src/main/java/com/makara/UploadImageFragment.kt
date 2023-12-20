@@ -32,6 +32,7 @@ class UploadImageFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         binding = FragmentUploadImageBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -63,12 +64,13 @@ class UploadImageFragment : Fragment() {
         viewModel.uploadResult.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is MakaraRepository.PredictionResult.Success -> {
-                    activity?.let {
-                        val intent = Intent (it, ResultActivity::class.java)
-                        it.startActivity(intent)
-                    }
                     // TODO: Handle successful prediction, maybe navigate or update UI
                     Toast.makeText(context, result.foodName, Toast.LENGTH_SHORT).show()
+                    activity?.let {
+                        val intent = Intent (it, ResultActivity::class.java)
+                        intent.putExtra("FOOD_NAME", result.foodName)
+                        it.startActivity(intent)
+                    }
                 }
                 is MakaraRepository.PredictionResult.Error -> {
                     // TODO: Handle error, show a message to the user
