@@ -6,7 +6,7 @@
         <item name="android:windowBackground">@color/brown</item>
         <item name="colorPrimary">@color/orange</item>
         <item name="android:colorPrimaryDark">@color/brown</item>
-        <item name="colorAccent">@color/brown</item>
+        <item name="colorAccent">@color/orange</item>
 
         <item name="android:textColorPrimary">@color/brown</item>
         <item name="android:textColor">@color/light_grey</item>

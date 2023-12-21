@@ -21,7 +21,7 @@ object FoodData {
                     "\n"+
                     "Main Ingredients: Thin spring roll pastry filled with various options such as banana, chocolate, cheese, or coconut, then fried to a golden brown.\n",
             R.drawable.molen,
-            "https://en.wikipedia.org/wiki/Sate_padang"
+            "https://en.wikipedia.org/wiki/Banana_fritter"
         ),
         Food(
             "Nasi Goreng",
@@ -30,7 +30,7 @@ object FoodData {
                     "\n"+
                     "Main Ingredients: Fried rice mixed with seasonings like sweet soy sauce, onions, eggs, and can be enhanced with various additional ingredients according to personal taste.\n",
             R.drawable.nasgor,
-            "https://en.wikipedia.org/wiki/Sate_padang"
+            "https://en.wikipedia.org/wiki/Nasi_goreng"
         ),
         Food(
             "Kerak Telor",
@@ -39,7 +39,7 @@ object FoodData {
                     "\n"+
                     "Main Ingredients: A mixture of glutinous rice, chicken eggs, grated coconut, dried shrimp (ebi), and Betawi's distinctive spices.\n",
             R.drawable.keraktelor,
-            "https://en.wikipedia.org/wiki/Sate_padang"
+            "https://en.wikipedia.org/wiki/Kerak_telor"
         ),
         Food(
             "Papeda Maluku",
@@ -48,7 +48,7 @@ object FoodData {
                     "\n"+
                     "Main Ingredients: Sago boiled to a thick consistency, served with fish in a richly spiced broth.\n",
             R.drawable.papeda,
-            "https://en.wikipedia.org/wiki/Sate_padang"
+            "https://en.wikipedia.org/wiki/Papeda_(food)"
         ),
         Food(
             "Bika Ambon",
@@ -57,7 +57,7 @@ object FoodData {
                     "\n"+
                     "Main Ingredients: A mixture of wheat flour, eggs, coconut milk, and pandan leaves to impart a unique flavor and aroma.\n",
             R.drawable.bikaambon,
-            "https://en.wikipedia.org/wiki/Sate_padang"
+            "https://en.wikipedia.org/wiki/Bika_ambon"
         ),
         Food(
             "Seblak",
@@ -66,14 +66,14 @@ object FoodData {
                     "\n"+
                     "Main Ingredients: Crackers, tofu, noodles, meatballs, and Seblak's distinctive seasonings, often cooked with a high level of spiciness according to individual preferences.\n",
             R.drawable.seblak,
-            "https://en.wikipedia.org/wiki/Sate_padang"
+            "https://en.wikipedia.org/wiki/Seblak"
         ),
         Food(
             "Coming Soon",
             "Coming Soon",
             "More food will be coming soon, staytuned!",
             R.drawable.comingsoon,
-            "https://en.wikipedia.org/wiki/Sate_padang"
+            "https://www.dicoding.com/"
         )
     )
 }
