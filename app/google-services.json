@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "408923947087",
+    "firebase_url": "https://capstone-dev-406613-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "capstone-dev-406613",
+    "storage_bucket": "capstone-dev-406613.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408923947087:android:a541dcfaf67399072daa3a",
+        "android_client_info": {
+          "package_name": "com.makara"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDa_bGQC6JzAFXQiKUgFGuenx-aBxg8ppM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
