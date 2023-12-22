@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.makara.databinding.FragmentDetailFoodBinding
 
 class DetailFoodFragment : Fragment() {
@@ -49,9 +48,5 @@ class DetailFoodFragment : Fragment() {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it.link))
             startActivity(intent)
         }
-    }
-
-    private fun showToast(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 }

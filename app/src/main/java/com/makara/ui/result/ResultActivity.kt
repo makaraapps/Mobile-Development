@@ -4,10 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
-import com.makara.DetailFoodFragmentArgs
-import com.makara.R
 import com.makara.data.local.FoodData
 import com.makara.databinding.ActivityResultBinding
 

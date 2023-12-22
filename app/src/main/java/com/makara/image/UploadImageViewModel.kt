@@ -1,3 +1,5 @@
+package com.makara.image
+
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

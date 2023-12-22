@@ -127,10 +127,6 @@ class MakaraRepository(
         return makaraPreference.getSession()
     }
 
-    suspend fun login() {
-        makaraPreference.login()
-    }
-
     suspend fun logout() {
         makaraPreference.logout()
     }

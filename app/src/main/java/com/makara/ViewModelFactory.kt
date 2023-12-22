@@ -1,6 +1,6 @@
 package com.makara
 
-import UploadImageViewModel
+import com.makara.image.UploadImageViewModel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
